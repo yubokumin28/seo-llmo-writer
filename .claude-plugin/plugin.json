@@ -1,0 +1,7 @@
+{
+  "name": "seo-llmo-writer",
+  "description": "日本語の文章を SEO・LLMO(AI に引用される)・読みやすさ の3つの目で点検し、直し、書くスキル",
+  "version": "1.1.0",
+  "author": { "name": "yubokumin28" },
+  "homepage": "https://github.com/yubokumin28/seo-llmo-writer"
+}

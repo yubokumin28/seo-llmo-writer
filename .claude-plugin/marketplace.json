@@ -1,0 +1,12 @@
+{
+  "name": "seo-llmo-writer",
+  "description": "遊牧民(yubokumin28)がクロコ🐊相談会で配る、文章を直すスキル",
+  "owner": { "name": "yubokumin28" },
+  "plugins": [
+    {
+      "name": "seo-llmo-writer",
+      "source": ".",
+      "description": "日本語の文章を SEO・LLMO(AI に引用される)・読みやすさ の3つの目で点検し、直し、書くスキル"
+    }
+  ]
+}

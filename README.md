@@ -18,9 +18,58 @@
 
 数字や誰かの発言は作りません。必要な所には `【要出典】` の印を付けるので、自分の体験の数字で埋めてください。
 
-## 使い方は2通り
+## 使い方は3通り
 
-### A. Claude Code で使う(スキルとして入れる)
+### A. Claude Code で使う(おすすめ: いつでも止める・戻す・外すができる)
+
+**入れる**(最初の1回だけ)
+
+Claude Code のチャット欄に、1行ずつ貼って Enter を押します。
+
+```
+/plugin marketplace add yubokumin28/seo-llmo-writer
+```
+
+```
+/plugin install seo-llmo-writer@seo-llmo-writer
+```
+
+2行目を押すと確認の画面が開くので「Install for you」を選びます。
+入れたら「この記事を SEO と LLMO の目で点検して」と文章を貼るだけで動きます。名前で呼ぶ時は `/seo-llmo-writer:seo-llmo-writer` です。
+
+**止める・また使う・新しい版にする**
+
+チャット欄で `/plugin` と打つと一覧の画面が開きます。Tab キーで「Installed」へ移り、seo-llmo-writer を選んで、
+
+| したい事 | 押すキー |
+|---|---|
+| しばらく止める(消さずに眠らせる) | スペースキー |
+| また使う | もう一度スペースキー |
+| 新しい版にする | Enter →「Update now」 |
+
+画面を閉じると、開き直さなくてもその場で効きます。
+
+**完全に外す**
+
+```
+/plugin marketplace remove seo-llmo-writer
+```
+
+この1行で、スキルも入れた設定もまとめて消えます。
+
+**画面を使わずにやる時**(ターミナルで打つ。Claude Code の外から操作できる)
+
+| したい事 | 打つ1行 |
+|---|---|
+| 入れる | `claude plugin marketplace add yubokumin28/seo-llmo-writer` のあと `claude plugin install seo-llmo-writer@seo-llmo-writer` |
+| 止める | `claude plugin disable seo-llmo-writer@seo-llmo-writer` |
+| また使う | `claude plugin enable seo-llmo-writer@seo-llmo-writer` |
+| 新しい版にする | `claude plugin update seo-llmo-writer@seo-llmo-writer` |
+| 完全に外す | `claude plugin marketplace remove seo-llmo-writer` |
+
+ターミナルで変えた時は、開いている Claude Code で `/reload-plugins` と打つか、開き直すと効きます。
+
+### B. Claude Code で使う(フォルダを置くだけの方法)
 
 1. 緑の **Code** ボタン → **Download ZIP** で落として、すべて展開する
 2. 中の `skills/seo-llmo-writer` フォルダを、次の場所にフォルダごとコピーする
@@ -28,13 +77,9 @@
    - Mac: `~/.claude/skills/`
 3. Claude Code を開き直して「この記事を SEO と LLMO の目で点検して」と文章を貼る
 
-または、Claude Code にこう頼めば入れてくれます:
+この方法で入れた時は、止める = そのフォルダを別の場所へ移す、外す = そのフォルダを消す、です。
 
-```
-https://github.com/yubokumin28/seo-llmo-writer の skills/seo-llmo-writer を、私の ~/.claude/skills/ に入れて
-```
-
-### B. ChatGPT・Gemini・Claude(ブラウザ)で使う
+### C. ChatGPT・Gemini・Claude(ブラウザ)で使う
 
 1. `skills/seo-llmo-writer/SKILL.md` を開き、先頭の `---` で囲まれた部分より下を全部コピーする
 2. 貼る場所:
@@ -45,14 +90,20 @@ https://github.com/yubokumin28/seo-llmo-writer の skills/seo-llmo-writer を、
 
 ## 外し方
 
-- **Claude Code**: `.claude\skills\seo-llmo-writer` フォルダを消すだけ。ほかの動きは何も変わりません
-- **ChatGPT・Gemini・Claude**: 貼った指示を消すだけ
+- **A で入れた時**: 上の「完全に外す」の1行。ほかの動きは何も変わりません
+- **B で入れた時**: `.claude\skills\seo-llmo-writer` フォルダを消すだけ
+- **C で入れた時**: 貼った指示を消すだけ
+
+## 安全について
+
+中身は文章(Markdown)だけです。プログラム・自動で動く仕掛け(フック)・外部への通信は入っていません。
 
 ## 中身
 
 ```
 skills/seo-llmo-writer/SKILL.md   … 指示書の本体(これ1枚で動く)
 references/sources.md             … 参考にした公開リポジトリと研究の一覧
+.claude-plugin/                   … Claude Code の /plugin で入れ外しするための設定
 ```
 
 ## 出典
